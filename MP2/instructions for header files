@@ -1,0 +1,18 @@
+1. download the graphics.h and winbgim.h
+2. go to your Dev-Cpp folder in your x86 program files, then open MINGW64, then open the include folder
+3. paste them in your include folder
+4. then on the previous MINGW64 folder, find your lib folder and open
+5. download the libbgi.a
+6. paste in your lib folder
+7. open dev c++
+8. create project
+9. click project --> project options --> parameters
+10. paste the next lines on your linker list:
+    -lbgi
+    -luser32
+    -lgdi32
+    -lcomdlg32
+    -luuid
+    -loleaut32
+    -lole32
+11. run the program
