@@ -1,0 +1,425 @@
+#include<graphics.h>
+#include<conio.h>
+#include<dos.h>
+#include <iostream>
+
+using namespace std;
+
+main()
+{
+   int gd = DETECT, gm, x, y, color, angle = 0;
+   int withDelay = 1;
+   int thisamount = 0;
+   int anotheramount = 0;
+   
+   //points
+   
+   //point A
+   int ax = 350, ay = 50;
+   //point B
+   int bx = 100, by = 50;
+   //point C
+   int cx = 100, cy = 250;
+   //point D
+   int dx = 150, dy = 200;
+   //point E
+   int ex = 250, ey = 100;
+   //point F
+   int fx = 250, fy = 200;
+   //point G
+   int gx = 200, gy = 150;
+   //point H
+   int hx = 150, hy = 100;
+   //point I
+   int ix = 150, iy = 275;
+   //point J
+   int jx = 350, jy = 275;
+   //temp point
+   int tempx, tempy;   
+   
+   struct arccoordstype a, b;
+   initgraph(&gd, &gm, "C:\\TC\\BGI");
+   delay(1000);
+   
+   tempx = ax;
+   tempy = ay;
+                                                            
+   
+   for (int i = ax; i > bx; i--,tempx--){
+   		line(tempx,tempy,tempx-1,tempy);
+   		if (withDelay){
+		   delay(1);   
+		}
+   }
+   
+	tempx = bx;
+   	tempy = by;
+   
+   
+	for (int i = by; i < cy; i++,tempy++){
+   		line(tempx,tempy,tempx,tempy+1);
+   		if (withDelay){
+		   delay(1);   
+		}
+   }
+   
+   	tempx = cx;
+   	tempy = cy;
+   
+   
+	for (int i = tempx; i < ex; i++,tempy--,tempx++){
+   		line(tempx,tempy,tempx+1,tempy-1);
+   			if (withDelay){
+		   delay(1);   
+		}
+   }   
+	   
+	tempx = ex;
+   	tempy = ey;
+   
+   
+	for (int i = 100; tempy < fy; i++,tempy++){
+   		line(tempx,tempy,tempx,tempy+1);
+   			if (withDelay){
+		   delay(1);   
+		}
+   } 
+   
+    tempx = fx;
+   	tempy = fy;
+   
+   
+	for (int i = tempy; i > hy; i--,tempy--,tempx--){
+   		line(tempx,tempy,tempx-1,tempy-1);
+   			if (withDelay){
+		   delay(1);   
+		}
+   } 
+   
+    tempx = hx;
+   	tempy = hy;
+   
+   
+	for (int i = tempy; i < iy; i++,tempy++){
+   		line(tempx,tempy,tempx,tempy+1);
+   			if (withDelay){
+		   delay(1);   
+		}
+   } 
+   
+    tempx = ix;
+   	tempy = iy;
+   
+   
+	for (int i = tempx; i < jx; i++,tempx++){
+   		line(tempx,tempy,tempx+1, tempy);
+   			if (withDelay){
+		   delay(1);   
+		}
+   } 
+   
+    tempx = jx;
+   	tempy = jy;
+   
+   
+	for (int i = tempy; i > ay; i--,tempy--){
+   		line(tempx,tempy,tempx,tempy-1);
+   			if (withDelay){
+		   delay(1);   
+		}
+   } 
+   
+  
+ 	int destinationx, destinationy;
+	
+	// filling
+	
+	
+	int amount = 1;
+
+	int flag1 = 1, flag2 = 1, flag3 = 1, flag4 = 1, flag5 = 1, flag6 = 1, flag7 = 1, flag8 = 1, flag9 = 1, flag10 = 1, flag11 = 1;
+
+	while (flag1 || flag2 || flag3 || flag4 || flag5 || flag6 || flag7 || flag8 || flag9 || flag10 || flag11 ){
+		
+		//A -> B
+		
+		if ((ay + amount) >= ey){
+			//do nothing
+			if (ey+anotheramount < gy){
+				tempx = ex-anotheramount;
+				tempy = ey+anotheramount;
+				destinationx = hx+anotheramount;
+				destinationy = hy+anotheramount;
+				for (int i = tempx; i > destinationx; i--,tempx--){
+   					line(tempx,tempy,tempx-1,tempy);
+   					if (withDelay){
+		   				delay(1);   
+					}
+   				}
+   				anotheramount++;
+			}else{
+				//donothing
+				flag1 = 0;
+			}
+			//flag1 = 0;
+		}else{
+			tempx = ax - amount;
+			tempy = ay + amount;
+			destinationx = bx + amount;
+			destinationy = by - amount;
+		
+			for (int i = tempx; i > destinationx; i--,tempx--){
+   				line(tempx,tempy,tempx-1,tempy);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}
+		}
+   		
+   		//B -> C
+   		
+		if ((bx + amount) > hx){
+			//do nothing
+			flag2 = 0;
+		}else{
+			
+   			tempx = bx + amount;
+   			tempy = by + amount;
+   			destinationx = cx + amount;
+   			destinationy = cy - amount;
+   		
+   			for (int i = tempy; i < destinationy; i++,tempy++){
+   				line(tempx,tempy,tempx,tempy+1);
+   				if (withDelay){
+			   		delay(1);   
+				}
+   			}	
+		}
+   		
+   		//C --> D
+   		
+   		if ((dy - amount) < ay){
+   			//do nothing
+			   flag3 = 0;	
+		}else{
+			
+   			tempx = cx;
+   			tempy = cy - amount;
+   			destinationx = dx;
+   			destinationy = dy - amount;
+   			for (int i = tempy; i > destinationy; i--, tempy--, tempx++){
+   				line(tempx,tempy,tempx+1,tempy-1);
+		   		if (withDelay){
+		   			delay(1);   
+				}
+			}
+			
+		}
+   		
+   		//D --> G
+   			if ((dy+amount) > iy){
+   				//donothing
+			}else{
+			
+   				tempx = dx;
+   				tempy = dy + amount;
+   				destinationx = gx;
+   				destinationy = gy + amount;
+   				for (int i = tempy; i >= destinationy; i--, tempy--, tempx++){
+   					line(tempx,tempy,tempx+1,tempy-1);
+		   			if (withDelay){
+		   				delay(1);   
+					}
+				}
+   		
+			}
+   		
+		//G --> E
+		
+		if ((ey-amount) < ay || (ex+amount+1) > ax){
+			//do nothing
+			flag4 = 0;
+		}else{
+			
+			tempx = gx;
+   			tempy = gy - amount;
+   			destinationx = ex+amount+1;
+   			destinationy = ey;
+   			for (int i = tempx, j = tempy; i < destinationx-1 || j > destinationy; i++, j--, tempy--, tempx++){
+   				if ((tempy+1) <= ay){
+   					break;
+				}
+				line(tempx,tempy,tempx+1,tempy-1);
+			   	if (withDelay){
+		   			delay(1);   
+				}
+			}
+		
+		}	
+		//E --> F
+		//plus amount plus amount
+		if ((ex+amount) > ax || (fy+amount + amount) > jy || (ey-amount - amount) < ay){
+			//do nothing
+			flag5 = 0;
+		}else{
+			tempx = ex + amount;
+			tempy = ey - amount - amount;
+   			destinationx = fx+amount;
+  	 		destinationy = fy + amount + amount;
+   		
+   			for (int i = tempy; i < destinationy; i++,tempy++){
+   				line(tempx,tempy,tempx,tempy+1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}	
+		}
+		
+		//F --> G
+		if ((gx-amount) < dx || (fy+amount+amount) > jy){
+			//do nothing
+			flag6 = 0;
+		}else{
+			tempx = fx +amount;
+   			tempy = fy + amount+amount;
+   			destinationx = gx - amount;
+   			destinationy = gy + amount;
+   		
+   			for (int i = tempy; i >= destinationy; i--,tempy--, tempx--){
+   				line(tempx,tempy,tempx-1,tempy-1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}
+				
+		}
+	
+		//G --> H
+		
+		if ((hy - amount-amount) < by){
+			//do nothing
+			flag7 = 0;
+		}else{
+		
+			tempx = gx;
+   			tempy = gy - amount;
+   			destinationx = hx - amount;
+   			destinationy = hy - amount-amount;
+   		
+   			for (int i = tempy; i > destinationy; i--,tempy--, tempx--){
+   				line(tempx,tempy,tempx - 1,tempy-1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}
+   			
+		}
+		
+   		//H --> D
+   		if ((hx - amount) < bx || (hy-amount-amount) < by){
+   			//do nothing
+   			flag8 = 0;
+		}else{
+	        tempx = hx - amount;
+   			tempy = hy - amount-amount;
+   			destinationx = dx - amount;
+   			destinationy = dy + amount;
+   		
+   			for (int i = tempy; i < destinationy; i++,tempy++){
+   				line(tempx,tempy,tempx,tempy+1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}	
+		}
+		
+   		//D --> I
+   		if ((dx+amount) > jx){
+   			//do nothing
+			   flag9 = 0;	
+		}else{
+		
+   			if ((dx + amount) > gx){
+   				tempx = dx + amount;
+   				tempy = dy + amount;
+   				destinationx = ix + amount;
+   				destinationy = iy;
+			}else{
+				tempx = dx + amount;
+   				tempy = dy - amount;
+   				destinationx = ix + amount;
+   				destinationy = iy;
+			}
+   		
+   			for (int i = tempy; i < destinationy; i++,tempy++){
+   				line(tempx,tempy,tempx,tempy+1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}
+   			
+		}
+   		//I --> J
+   		
+   		if ((iy-amount) <= fy){
+			//do nothing
+			if (dy-thisamount < gy){
+				//donothing
+				flag10 = 0;			
+			}else{
+				tempx = dx+thisamount;
+				tempy = dy-thisamount;
+				destinationx = fx - thisamount;
+				destinationy = fy - thisamount;
+			
+   				for (int i = tempx; i < destinationx; i++,tempx++){
+   					line(tempx,tempy,tempx+1,tempy);
+   					if (withDelay){
+		   				delay(1);   
+					}
+   				}	
+   				thisamount++;
+			}
+   			
+			
+		}else{
+		
+   			tempx = ix;
+   			tempy = iy - amount;
+   			destinationx = jx;
+   			destinationy = jy - amount;
+   		
+   			for (int i = tempx; i < destinationx; i++,tempx++){
+   				line(tempx,tempy,tempx+1,tempy);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}	
+		}
+   		
+   		//J --> A
+   		if ((jx-amount) < ex){
+   			//do nothing
+   			flag11 = 0;
+		}else{
+			
+   			tempx = jx - amount;
+   			tempy = jy - amount;
+   			destinationx = ax - amount;
+   			destinationy = ay;
+   		
+   			for (int i = tempy; i > destinationy; i--,tempy--){
+   				line(tempx,tempy,tempx,tempy-1);
+   				if (withDelay){
+		   			delay(1);   
+				}
+   			}
+   		
+		}	
+		amount++;
+	} 
+  	
+  	cout << "Finished."<<endl;
+   getch();
+   closegraph();
+}
